@@ -32,7 +32,7 @@ public class Game {
         this.amountOfFlowers = amountOfFlowers;
         this.eatNeested = eatNeested;
         this.movesLeft = movesLeft;
-        field = new Field(sizeX, sizeX);
+        field = new Field(sizeX, sizeY);
 
     }
 

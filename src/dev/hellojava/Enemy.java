@@ -8,7 +8,7 @@ public class Enemy implements Fieldbl{
 
     @Override
     public String getSymbol() {
-        return "U+1F43A";
+        return "%";
     }
 
     public Enemy(int rowIndex, int columnIndex) {

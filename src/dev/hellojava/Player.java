@@ -13,7 +13,7 @@ public class Player implements Fieldbl {
 
     @Override
     public String getSymbol() {
-        return " U+1F407 ";
+        return "@";
     }
 
     public Player(int rowIndex, int columnIndex, Game game) {
