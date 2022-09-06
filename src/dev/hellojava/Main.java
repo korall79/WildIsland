@@ -3,9 +3,9 @@ package dev.hellojava;
 import java.util.Scanner;
 
 public class Main {
-    public static  int rows=3;            //строки
-    public static int columns=4;          //столбцы
-    public static int amountOfEnemies=10;  //количество врагов
+    public static  int rows=12;            //строки
+    public static int columns=20;          //столбцы
+    public static int amountOfEnemies=20;  //количество врагов
     public static int eatNeested=100;       //необходимая еда
     public static int moves=40;            //перемещения
     public static int getAmountOfFlowers = 10;

@@ -25,18 +25,43 @@ public class OptionsMenu {
                             "\nflowers: "+Main.getAmountOfFlowers);
                     break;
                 case 2:
-                    System.out.println("Введите новое значение для строк");
-                    Main.rows= scanner.nextInt();
-                    System.out.println("Введите новое значение для столбцов");
-                    Main.columns= scanner.nextInt();
-                    System.out.println("Введите новое значение для enemies");
-                    Main.amountOfEnemies= scanner.nextInt();
-                    System.out.println("Введите новое значение для eat");
-                    Main.eatNeested= scanner.nextInt();
-                    System.out.println("Введите новое значение для moves");
-                    Main.moves= scanner.nextInt();
-                    System.out.println("Введите новое значение для flowers");
-                    Main.getAmountOfFlowers= scanner.nextInt();
+                    String value;
+                    System.out.println("Введите новое значение для rows, оставьте пустым, чтобы сохранить текущее значение ["+ Main.rows+ "] :");
+                    scanner.hasNextLine();
+
+                    value = scanner.nextLine();
+                    if (!value.isBlank()){
+                        Main.rows= Integer.parseInt(value);
+                    }
+                    System.out.println("Введите новое значение для columns, оставьте пустым, чтобы сохранить текущее значение ["+ Main.columns+ "] :");
+                    value = scanner.nextLine();
+                    if (!value.isBlank()){
+                        Main.columns= Integer.parseInt(value);
+                    }
+                    System.out.println("Введите новое значение для enemies, оставьте пустым, чтобы сохранить текущее значение ["+ Main.amountOfEnemies+ "] :");
+                    value = scanner.nextLine();
+                    if (!value.isBlank()){
+                        Main.amountOfEnemies= Integer.parseInt(value);
+                    }
+                    System.out.println("Введите новое значение для eat, оставьте пустым, чтобы сохранить текущее значение ["+ Main.eatNeested+ "] :");
+                    value = scanner.nextLine();
+                    if (!value.isBlank()){
+                        Main.eatNeested= Integer.parseInt(value);
+                    }
+                    System.out.println("Введите новое значение для moves, оставьте пустым, чтобы сохранить текущее значение ["+ Main.moves+ "] :");
+                    value = scanner.nextLine();
+                    if (!value.isBlank()){
+                        Main.moves= Integer.parseInt(value);
+                    }
+                    System.out.println("Введите новое значение для flowers, оставьте пустым, чтобы сохранить текущее значение ["+ Main.getAmountOfFlowers+ "] :");
+                    value = scanner.nextLine();
+                    if (!value.isBlank()){
+                        Main.getAmountOfFlowers= Integer.parseInt(value);
+                    }
+
+                    if(!isValuesNotPlayable()){
+                        System.out.println("Введенные вами значения не воспроизводятся, проверьте и повторите попытку");
+                    }
                     break;
                 case 3:
                     break;
@@ -47,5 +72,11 @@ public class OptionsMenu {
 
         }while(command !=3);
 
+    }
+    private static Boolean isValuesNotPlayable(){
+        int fildSize = Main.rows * Main.columns;
+        int allGameObjects = Main.amountOfEnemies + Main.getAmountOfFlowers +1;
+        boolean isValuesNotPlayable = ((allGameObjects/ fildSize) > 0.75);
+        return isValuesNotPlayable;
     }
 }

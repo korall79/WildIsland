@@ -21,6 +21,7 @@ public class Player implements Fieldbl {
         this.columnIndex = columnIndex;
         this.game = game;
         this.field = game.getField();
+        field.setFieldbl(rowIndex,columnIndex,this);
 
     }
 
@@ -40,34 +41,39 @@ public class Player implements Fieldbl {
         this.columnIndex = columnIndex;
     }
 
-    public void makeMove(String command) {
+    public Boolean makeMove(String command) {
+
+        Boolean isIncorrectMove= true;
+
         switch (command) {
             case MOVE_LEFT:
-                movePlayer(0, -1);
+                isIncorrectMove = movePlayer(0, -1);
                 break;
             case MOVE_RIGHT:
-                movePlayer(0, 1);
+                isIncorrectMove =movePlayer(0, 1);
                 break;
             case MOVE_UP:
-                movePlayer(-1, 0);
+                isIncorrectMove =movePlayer(-1, 0);
                 break;
             case MOVE_DOWN:
-                movePlayer(1, 0);
+                isIncorrectMove = movePlayer(1, 0);
                 break;
             case NO_MOVE:
+                isIncorrectMove =false;
                 break;
             default:
                 showError(command);
                 break;
         }
+        return isIncorrectMove;
     }
 
-    private void movePlayer(int deltaRowIndex, int deltaColumnIndex) {
+    private Boolean movePlayer(int deltaRowIndex, int deltaColumnIndex) {
         int newRowIndex = rowIndex + deltaRowIndex;
         int newColumnIndex = columnIndex + deltaColumnIndex;
 
-        if ((newRowIndex > 0) && (newRowIndex <= field.getSizeX())
-                && (newColumnIndex > 0) && (newColumnIndex < field.getSizeX())
+        if ((newRowIndex >= 0) && (newRowIndex <= field.getSizeX())
+                && (newColumnIndex >= 0) && (newColumnIndex < field.getSizeY())
                 && !((field.getFieldbl(newRowIndex, newColumnIndex)) instanceof Enemy)) {
 
             if (field.getFieldbl(newRowIndex, newColumnIndex) instanceof Flower) {
@@ -80,6 +86,10 @@ public class Player implements Fieldbl {
             if (field.getFieldbl(newRowIndex, newColumnIndex) instanceof Empty) {
                 swapPlayer(newRowIndex, newColumnIndex);
             }
+            return false;
+        }
+        else {
+            return true;
         }
     }
 
