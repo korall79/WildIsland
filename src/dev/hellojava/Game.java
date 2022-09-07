@@ -114,6 +114,10 @@ public class Game {
     }
 
     private void showField() {
+        System.out.print("\n\nTurns left :" + movesLeft
+                            + ", transistors gathered:" + eatGathered
+                            + "/" + eatNeested);
+        field.showField();
     }
 
     private void playerTurn() {
