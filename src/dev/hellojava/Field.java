@@ -32,7 +32,7 @@ public class Field implements Fieldbl{
         for (int i = 0; i < sizeX; i++) {
             System.out.println();
             for (int j = 0; j < sizeY; j++) {
-                System.out.println(field[i][j].getSymbol());
+                System.out.print(field[i][j].getSymbol());
 
             }
 
